@@ -1,6 +1,6 @@
 from . import main
 from app.main.model import *
-from flask import request
+from flask import request, render_template
 
 @main.route('/register', methods = ['GET', 'POST'])
 def register():
@@ -26,3 +26,7 @@ def register():
 @main.route('/test', methods = ['GET', 'POST'])
 def test():
     return jsonify({'msg': 'success'})
+
+@main.route('/ye', methods = ['GET', 'POST'])
+def ye():
+    return '<h1>Hello, 宜人<h1/>'
