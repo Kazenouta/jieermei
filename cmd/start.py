@@ -15,9 +15,9 @@ def main():
 
     arg = sys.argv[1]
     if arg == 'install-gunicorn':  # 安装 Gunicorn
-        os.system('sudo apt-get install gunicorn3')
+        os.system('sudo apt-get install gunicorn')
     elif arg == 'start-gunicorn':  # 启动 Gunicorn, 后台运行
-        os.system('gunicorn3 -w4 main:app -b 0.0.0.0:8080 -D')
+        os.system('gunicorn -w4 main:app -b 0.0.0.0:8080 -D')
     elif arg == 'install-nginx':   # 安装 Nginx
         os.system('sudo apt-get remove nginx')
         os.system('sudo apt-get install nginx')
@@ -28,7 +28,7 @@ def main():
     elif arg == 'start-flask':     # 启动 Flask, 后台运行
         os.system(f'nohup python3 ./main.py >> ./log/main.log &')
     elif arg == 'start-all':
-        os.system('gunicorn3 -w4 main:app -b 0.0.0.0:8080 -D')
+        os.system('gunicorn -w4 main:app -b 0.0.0.0:8080 -D')
         os.system('sudo /etc/init.d/nginx start')
     else:
         raise Exception(f'argv: {arg} is invalid!')
